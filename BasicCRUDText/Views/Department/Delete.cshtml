@@ -1,0 +1,30 @@
+﻿@model BasicCRUDText.Models.Department
+
+@{
+    ViewData["Title"] = "Delete Dept";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-6 offset-3">
+            <h3 class="text-center text-info">Create Department</h3>
+            <hr />
+            <form asp-action="Delete" asp-route-DepId="@Model.DepId" method="post" enctype="multipart/form-data">
+                <div class="mb-2">
+                    <label class="form-label" asp-for="DeptName" ></label>
+                    <input class="form-control" asp-for="DeptName" disabled/>
+                    <span asp-validation-for="DeptName" class="text-danger"></span>
+                </div>
+                <div class="text-center">
+                    <input type="submit" value="Delete" class="btn btn-sm btn-outline-danger w-25" />
+                    <a asp-action="Index" class="btn btn-sm btn-outline-success w-25">Cancle</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+    }

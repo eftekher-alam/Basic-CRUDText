@@ -1,0 +1,37 @@
+﻿@model IEnumerable<BasicCRUDText.Models.Department>
+
+@{
+    ViewData["Title"] = "List of Dept";
+}
+
+<div class="container">
+    <div class="row">
+        <h1 class="text-info text-center">Department List</h1>
+        <div class="justify-content-end mb-2">
+            <a asp-action="Create" class="btn btn-sm btn-outline-info">Create</a>
+        </div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Department Id</th>
+                    <th>Department Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.DepId</td>
+                        <td>@item.DeptName</td>
+                        <td>
+                            <a asp-action="Update" asp-route-DepId="@item.DepId" class="btn btn-outline-warning">Update</a>
+                            <a asp-action="Delete" asp-route-DepId="@item.DepId" class="btn btn-outline-danger">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

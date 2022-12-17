@@ -1,0 +1,59 @@
+﻿@model BasicCRUDText.Models.Student
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-6 offset-3">
+            <h3 class="text-center text-info">Update Student</h3>
+            <hr />
+            <form method="post" asp-action="Delete" asp-route-Id="@Model.Id">
+                <div>
+                    <label asp-for="Name" class="form-label"></label>
+                    <input asp-for="Name" type="text" class="form-control" disabled />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div>
+                    <label asp-for="Gender" class="form-label mr-3"></label>
+                    <label class="form-check-label m-lg-3">
+                        <input asp-for="Gender" type="radio" value="Male" id="Male" class="form-check-input">
+                        Male
+                    </label>
+                    <label class="form-check-label">
+                        <input asp-for="Gender" type="radio" value="Female" class="form-check-input" disabled>
+                        Female
+                    </label>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+
+
+                <div class="mb-3">
+                    <label asp-for="DateOfBirth" class="form-label"></label>
+                    <input asp-for="DateOfBirth" type="date" class="form-control" disabled />
+                    <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="DepId" class="form-label">Department</label>
+                    @*<select class="form-control" asp-for="DeptId" asp-items="@(new SelectList(ViewBag.Dept, "DeptId", "DepName"))">*@
+                    <select class="form-control" asp-for="DepId" disabled>
+                        <option selected>--------- Select Department ----------</option>
+                        @foreach (var item in ViewBag.Dept)
+                        {
+                            <option value="@item.DepId">@item.DeptName</option>
+                        }
+                    </select>
+                    <span asp-validation-for="DepId" class="text-danger"></span>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-sm btn-outline-danger">Confirm</button>
+                    <a asp-action="Index" class="btn btn-sm btn-outline-info">Cancle</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

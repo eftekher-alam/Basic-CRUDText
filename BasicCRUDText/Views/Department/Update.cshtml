@@ -1,0 +1,33 @@
+﻿@model BasicCRUDText.Models.Department
+
+@{
+    ViewData["Title"] = "Update Dept";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-6 offset-3">
+            <h3 class="text-center text-info">Create Department</h3>
+            <hr />
+            <form asp-action="Update" asp-route-DepId="@Model.DepId" method="post" enctype="multipart/form-data">
+                <div class="mb-2">
+                    <label class="form-label" asp-for="DeptName"></label>
+                    <input class="form-control" asp-for="DeptName" />
+                    <span asp-validation-for="DeptName" class="text-danger"></span>
+                </div>
+                <div class="text-center">
+                    <input type="submit" value="Update" class="btn btn-sm btn-outline-warning w-25" />
+                    <a asp-action="Index" class="btn btn-sm btn-outline-danger w-25">Cancle</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Styles{
+    <link href="~/custom.css" rel="stylesheet" />
+}
+
+@section Scripts{
+    @{<partial name="_ValidationScriptsPartial"/>}
+}
